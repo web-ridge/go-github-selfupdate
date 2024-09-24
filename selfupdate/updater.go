@@ -8,7 +8,6 @@ import (
 	"regexp"
 
 	"github.com/google/go-github/v30/github"
-	gitconfig "github.com/tcnksm/go-gitconfig"
 	"golang.org/x/oauth2"
 )
 
@@ -54,9 +53,9 @@ func NewUpdater(config Config) (*Updater, error) {
 	if token == "" {
 		token = os.Getenv("GITHUB_TOKEN")
 	}
-	if token == "" {
-		token, _ = gitconfig.GithubToken()
-	}
+	//if token == "" {
+	//	token, _ = gitconfig.GithubToken()
+	//}
 	ctx := context.Background()
 	hc := newHTTPClient(ctx, token)
 
