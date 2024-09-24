@@ -90,9 +90,11 @@ func NewUpdater(config Config) (*Updater, error) {
 // If you set your API token to $GITHUB_TOKEN, the client will use it.
 func DefaultUpdater() *Updater {
 	token := os.Getenv("GITHUB_TOKEN")
-	if token == "" {
-		token, _ = gitconfig.GithubToken()
-	}
+	//If this is set, users get a pop-up asking for CommandLineTools install for 'git' command
+
+	//if token == "" {
+	//	token, _ = gitconfig.GithubToken()
+	//}
 	ctx := context.Background()
 	client := newHTTPClient(ctx, token)
 	return &Updater{api: github.NewClient(client), apiCtx: ctx}
